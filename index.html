@@ -1,0 +1,185 @@
+<title>まつ毛サロン 伸びたリール解剖</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: 結論 → 数字で見る全体像 → 跳ねた上位の表 → 1本ずつの解剖 → 型 → ジャンル比較 → 真似の手順 → 調べ方 */
+:root{
+  --bg:#f7f6f3; --surface:#ffffff; --ink:#1f2128; --muted:#5f6370; --line:#e2e0da;
+  --ai:#5b4a8a;
+  --karashi:#c9921e;
+  --warn:#b4432f; --warn-bg:#fbede9;
+  --gray-bg:#efeeea;
+  --f-display:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-body:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-num:"Noto Sans JP","Hiragino Sans",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#131614; --surface:#1b1f1d; --ink:#e8eae6; --muted:#9da39f; --line:#2d3330;
+  --ai:#b3a3e0; --karashi:#e2b54e; --warn:#f08a74; --warn-bg:#3a2420; --gray-bg:#222724; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#131614; --surface:#1b1f1d; --ink:#e8eae6; --muted:#9da39f; --line:#2d3330;
+  --ai:#b3a3e0; --karashi:#e2b54e; --warn:#f08a74; --warn-bg:#3a2420; --gray-bg:#222724; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.9;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding-block:40px 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:56px}
+h1,h2{font-family:var(--f-display);font-weight:900;text-wrap:balance;line-height:1.35;margin:0}
+h1{font-size:clamp(28px,5vw,40px)}
+h2{font-size:22px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+h2 small{font-family:var(--f-num);font-size:13px;color:var(--ai);letter-spacing:.08em}
+h3{font-size:18px;font-weight:700;margin:0;line-height:1.5}
+p{margin:0}
+.eyebrow{font-family:var(--f-num);font-size:13px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.lede{color:var(--muted);max-width:62ch}
+section{display:flex;flex-direction:column;gap:18px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.points{display:grid;gap:14px;counter-reset:p;padding:0;margin:0;list-style:none}
+.points li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.points li::before{counter-increment:p;content:counter(p);font-family:var(--f-display);color:var(--surface);background:var(--ai);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:15px;margin-top:2px}
+.points b{color:var(--ai)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:15px}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:500;color:var(--muted);font-size:13.5px}
+tr:last-child td{border-bottom:0}
+td.note{text-align:left;white-space:normal;color:var(--muted);font-size:14px;min-width:150px}
+.acct{font-family:var(--f-num);font-size:13px;color:var(--muted)}
+.chip{display:inline-block;font-size:12.5px;padding:1px 8px;border-radius:99px;border:1px solid currentColor;line-height:1.6}
+.chip.warn{color:var(--warn)} .chip.ok{color:var(--ai)} .chip.flat{color:var(--muted)}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;overflow-x:auto}
+.chart svg{display:block;width:100%;min-width:520px;height:auto}
+.caption{font-size:14px;color:var(--muted)}
+.reels{display:grid;gap:16px}
+.reel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:grid;gap:12px}
+.reel.special{border-color:var(--warn);background:var(--warn-bg)}
+.reel.flat{background:var(--gray-bg)}
+.reel-head{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;justify-content:space-between}
+.meta{font-family:var(--f-num);font-size:13.5px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;border-block:1px dashed var(--line);padding-block:10px}
+.stat{display:flex;flex-direction:column;min-width:0}
+.stat span{font-size:12.5px;color:var(--muted);letter-spacing:.04em}
+.stat strong{font-family:var(--f-num);font-weight:500;font-size:15px}
+.stat.hl strong{color:var(--ai)}
+@media (max-width:520px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.why{display:grid;gap:6px;padding-left:1.1em;margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tag{font-size:13px;padding:2px 10px;border-radius:99px;background:color-mix(in srgb,var(--karashi) 18%,transparent);color:var(--ink)}
+.types{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.type{border-top:3px solid var(--ai);padding-top:10px;display:grid;gap:6px;align-content:start}
+.type .ex{font-size:14px;color:var(--muted)}
+.type.no{border-top-color:var(--muted)}
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.compare div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:6px}
+.compare h3{font-size:15px;color:var(--muted)}
+.todo{display:grid;gap:10px;padding:0;margin:0;list-style:none}
+.todo li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.todo b{display:block}
+.method{font-size:14.5px;color:var(--muted);display:grid;gap:6px;padding-left:1.1em;margin:0}
+a{color:var(--ai)}
+a:focus-visible{outline:2px solid var(--ai);outline-offset:2px}
+
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:2px}
+.kpi span{font-size:12.5px;color:var(--muted)}
+.kpi strong{font-family:var(--f-num);font-size:24px;font-weight:700;color:var(--ai);line-height:1.3}
+.kpi small{font-size:12.5px;color:var(--muted)}
+@media (max-width:640px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cmp td:first-child{white-space:normal}
+.cmp tr.me td{background:color-mix(in srgb,var(--ai) 9%,transparent);font-weight:500}
+.nav{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:14px}
+</style>
+<div class="wrap">
+
+<header style="display:grid;gap:14px">
+  <nav class="nav" aria-label="ほかのジャンル"><a href="https://tomokidbusiness-coder.github.io/kojinten-reel-report/">飲食の個人店</a><a href="https://tomokidbusiness-coder.github.io/nail-reel-report/">ネイルサロン</a><a href="https://tomokidbusiness-coder.github.io/beauty-salon-reel-report/">美肌・スキンケア</a><span>まつ毛・眉</span></nav>
+  <div class="eyebrow">Instagram リール調査 · まつ毛・眉サロン編 · 2026年11月10日時点</div>
+  <h1>まつ毛・眉サロン80店の、<br>伸びたリールを解剖する</h1>
+  <p class="lede">まつげパーマ、マツエク、パリジェンヌ、眉毛サロンなど、個人や小さなチームで営むアイサロン80店のリールを調べました。今回の4ジャンルで一番多く集められたジャンルです。各サロンの「いつもの再生数」から大きく跳ねたリールを開いて、何が違ったのかを見ています。</p>
+</header>
+
+<section>
+  <h2><small>SUMMARY</small>先に結論</h2>
+  <ol class="points"><li><p><b>4割のサロンに、いつもの5倍以上に跳ねたリールがありました。</b>80店のうち31店です。30倍以上に跳ねたサロンも9店あり、4ジャンルで一番多い数でした。</p></li><li><p><b>自然に伸びたのは「人のストーリー」と「描き方のお役立ち」でした。</b>「22歳無職の時に東京へ」というアイリストの経歴は10.6万回、「7年目のぶどう農家でした！」という店主の意外な一面は3万回、「眉毛描くと濃くなる方へ」の描き方は11.6万回です。</p></li><li><p><b>大きく跳ねたリールには、宣伝型も多くありました。</b>「恵比寿・銀座・心斎橋」「NEW OPEN 平日限定価格」「サービス一覧」などの文面で、いいね率は0.02〜0.06%と、4ジャンルで一番低い水準です。</p></li></ol>
+</section>
+
+<section style="display:grid;gap:16px">
+  <h2><small>NUMBERS</small>80アカウントの全体像</h2>
+  <div class="kpis">
+  <div class="kpi"><span>調べたアカウント</span><strong>80件</strong><small>リール6本以上</small></div>
+  <div class="kpi"><span>フォロワー数(中央値)</span><strong>589人</strong><small>真ん中のアカウント</small></div>
+  <div class="kpi"><span>いつもの再生数(中央値)</span><strong>1,038回</strong><small>直近12本の中央値</small></div>
+  <div class="kpi"><span>5倍以上に跳ねた</span><strong>39%</strong><small>31件 / 10倍以上は15件</small></div>
+</div>
+  <div class="chart"><svg viewBox="0 0 640 274" role="img" aria-label="跳ね幅ごとのアカウント数"><rect x="40" y="24.0" width="80" height="200.0" rx="3" fill="var(--muted)" opacity=".45"/><text x="80.0" y="18.0" text-anchor="middle" font-size="14" fill="var(--ink)" font-family="Noto Sans JP, sans-serif">20件</text><text x="80.0" y="244" text-anchor="middle" font-size="13" fill="var(--muted)" font-family="Noto Sans JP, sans-serif">2倍未満</text><rect x="136" y="54.0" width="80" height="170.0" rx="3" fill="var(--muted)" opacity=".45"/><text x="176.0" y="48.0" text-anchor="middle" font-size="14" fill="var(--ink)" font-family="Noto Sans JP, sans-serif">17件</text><text x="176.0" y="244" text-anchor="middle" font-size="13" fill="var(--muted)" font-family="Noto Sans JP, sans-serif">2〜3倍</text><rect x="232" y="104.0" width="80" height="120.0" rx="3" fill="var(--muted)" opacity=".45"/><text x="272.0" y="98.0" text-anchor="middle" font-size="14" fill="var(--ink)" font-family="Noto Sans JP, sans-serif">12件</text><text x="272.0" y="244" text-anchor="middle" font-size="13" fill="var(--muted)" font-family="Noto Sans JP, sans-serif">3〜5倍</text><rect x="328" y="64.0" width="80" height="160.0" rx="3" fill="var(--ai)" opacity=".9"/><text x="368.0" y="58.0" text-anchor="middle" font-size="14" fill="var(--ink)" font-family="Noto Sans JP, sans-serif">16件</text><text x="368.0" y="244" text-anchor="middle" font-size="13" fill="var(--muted)" font-family="Noto Sans JP, sans-serif">5〜10倍</text><rect x="424" y="164.0" width="80" height="60.0" rx="3" fill="var(--ai)" opacity=".9"/><text x="464.0" y="158.0" text-anchor="middle" font-size="14" fill="var(--ink)" font-family="Noto Sans JP, sans-serif">6件</text><text x="464.0" y="244" text-anchor="middle" font-size="13" fill="var(--muted)" font-family="Noto Sans JP, sans-serif">10〜30倍</text><rect x="520" y="134.0" width="80" height="90.0" rx="3" fill="var(--ai)" opacity=".9"/><text x="560.0" y="128.0" text-anchor="middle" font-size="14" fill="var(--ink)" font-family="Noto Sans JP, sans-serif">9件</text><text x="560.0" y="244" text-anchor="middle" font-size="13" fill="var(--muted)" font-family="Noto Sans JP, sans-serif">30倍以上</text><line x1="34" x2="606" y1="224" y2="224" stroke="var(--line)"/><text x="40" y="266" font-size="12.5" fill="var(--muted)" font-family="Noto Sans JP, sans-serif">濃い色 = いつもの5倍以上に跳ねたリールがあるアカウント</text></svg></div>
+  <p class="caption">「跳ね幅」は、直近12〜15本のリールの中で一番再生されたものが、いつもの再生数(中央値)の何倍だったかです。30倍以上の9店には、地域の速報、本人のストーリー、宣伝型が混ざっています。</p>
+</section>
+
+<section style="display:grid;gap:16px">
+  <h2><small>TOP 15</small>大きく跳ねたアカウント</h2>
+  <p class="lede">跳ね幅の大きい順です。最高再生数をクリックすると、そのリールが開きます。メモは、実際にリールを開いて確認した内容です。</p>
+  <div class="tbl"><table><thead><tr><th>アカウント</th><th>フォロワー</th><th>いつもの再生数</th><th>最高再生数</th><th>跳ね幅</th><th>フォロワー比</th><th>メモ</th></tr></thead><tbody><tr><td><a href="https://www.instagram.com/eclat_hazuki_motoyawata/" target="_blank" rel="noopener">@eclat_hazuki_motoyawata</a></td><td class="num">861</td><td class="num">約608</td><td class="num"><a href="https://www.instagram.com/reel/DdioazegnC2/" target="_blank" rel="noopener">74.7万</a></td><td class="num"><b>1229倍</b></td><td class="num">868倍</td><td class="note"><span class="chip ok">地域の速報</span> 駅前の冠水情報</td></tr><tr><td><a href="https://www.instagram.com/nicottlash_kobe/" target="_blank" rel="noopener">@nicottlash_kobe</a></td><td class="num">5,741</td><td class="num">約309</td><td class="num"><a href="https://www.instagram.com/reel/DfatRIizg-J/" target="_blank" rel="noopener">4.1万</a></td><td class="num"><b>133倍</b></td><td class="num">7.1倍</td><td class="note"><span class="chip warn">宣伝型</span> サービス一覧。いいね率0.06%</td></tr><tr><td><a href="https://www.instagram.com/sendai_kurumi/" target="_blank" rel="noopener">@sendai_kurumi</a></td><td class="num">1,063</td><td class="num">約753</td><td class="num"><a href="https://www.instagram.com/reel/DZJ1-NxMpVS/" target="_blank" rel="noopener">7.9万</a></td><td class="num"><b>105倍</b></td><td class="num">74倍</td><td class="note"><span class="chip warn">宣伝型</span> NEW OPEN・平日限定価格</td></tr><tr><td><a href="https://www.instagram.com/nina_eyedesign/" target="_blank" rel="noopener">@nina_eyedesign</a></td><td class="num">7,965</td><td class="num">約3,833</td><td class="num"><a href="https://www.instagram.com/reel/C4hMqsjPzmc/" target="_blank" rel="noopener">25.9万</a></td><td class="num"><b>68倍</b></td><td class="num">33倍</td><td class="note"><span class="chip warn">宣伝型</span> 3店舗の地名。いいね率0.06%</td></tr><tr><td><a href="https://www.instagram.com/chika_charire/" target="_blank" rel="noopener">@chika_charire</a></td><td class="num">528</td><td class="num">約695</td><td class="num"><a href="https://www.instagram.com/reel/DcqQ3I2TxGh/" target="_blank" rel="noopener">4.3万</a></td><td class="num"><b>62倍</b></td><td class="num">81倍</td><td class="note"><span class="chip ok">1日VLOG</span></td></tr><tr><td><a href="https://www.instagram.com/akane_eyelash.en/" target="_blank" rel="noopener">@akane_eyelash.en</a></td><td class="num">587</td><td class="num">約1,452</td><td class="num"><a href="https://www.instagram.com/reel/DOGVTuuE2sA/" target="_blank" rel="noopener">7.8万</a></td><td class="num"><b>54倍</b></td><td class="num">133倍</td><td class="note"><span class="chip ok">呼びかけ</span> 「派手なデザインは苦手な方へ」</td></tr><tr><td><a href="https://www.instagram.com/rimore.m/" target="_blank" rel="noopener">@rimore.m</a></td><td class="num">549</td><td class="num">約699</td><td class="num"><a href="https://www.instagram.com/reel/Dd3X0RMSbkR/" target="_blank" rel="noopener">3万</a></td><td class="num"><b>43倍</b></td><td class="num">55倍</td><td class="note"><span class="chip ok">意外な一面</span> 7年目のぶどう農家</td></tr><tr><td><a href="https://www.instagram.com/runa__eyelash/" target="_blank" rel="noopener">@runa__eyelash</a></td><td class="num">661</td><td class="num">約2,637</td><td class="num"><a href="https://www.instagram.com/reel/DcGOl5ZRaKk/" target="_blank" rel="noopener">10.6万</a></td><td class="num"><b>40倍</b></td><td class="num">160倍</td><td class="note"><span class="chip ok">ストーリー</span> 「22歳無職の時に東京へ」</td></tr><tr><td><a href="https://www.instagram.com/mignon_shiori/" target="_blank" rel="noopener">@mignon_shiori</a></td><td class="num">1,820</td><td class="num">約3,691</td><td class="num"><a href="https://www.instagram.com/reel/DYPEKwmtYim/" target="_blank" rel="noopener">11.6万</a></td><td class="num"><b>31倍</b></td><td class="num">64倍</td><td class="note"><span class="chip ok">お役立ち</span> 眉の描き方</td></tr><tr><td><a href="https://www.instagram.com/asot_eye_design/" target="_blank" rel="noopener">@asot_eye_design</a></td><td class="num">1,321</td><td class="num">約674</td><td class="num"><a href="https://www.instagram.com/reel/DZ__h79zGA6/" target="_blank" rel="noopener">1.4万</a></td><td class="num"><b>21倍</b></td><td class="num">11倍</td><td class="note"></td></tr><tr><td><a href="https://www.instagram.com/min_te_lash_okinawa/" target="_blank" rel="noopener">@min_te_lash_okinawa</a></td><td class="num">981</td><td class="num">約923</td><td class="num"><a href="https://www.instagram.com/reel/DdYcn_hit14/" target="_blank" rel="noopener">1.9万</a></td><td class="num"><b>21倍</b></td><td class="num">19倍</td><td class="note"></td></tr><tr><td><a href="https://www.instagram.com/mederu_eyelash/" target="_blank" rel="noopener">@mederu_eyelash</a></td><td class="num">3,185</td><td class="num">約1,200</td><td class="num"><a href="https://www.instagram.com/reel/DcQFpskJwMc/" target="_blank" rel="noopener">2.2万</a></td><td class="num"><b>18倍</b></td><td class="num">6.9倍</td><td class="note"></td></tr><tr><td><a href="https://www.instagram.com/eny_eyelash/" target="_blank" rel="noopener">@eny_eyelash</a></td><td class="num">4,217</td><td class="num">約2,615</td><td class="num"><a href="https://www.instagram.com/reel/Des99TPzCtI/" target="_blank" rel="noopener">4.7万</a></td><td class="num"><b>18倍</b></td><td class="num">11倍</td><td class="note"></td></tr><tr><td><a href="https://www.instagram.com/arvo.niigata.eyelash/" target="_blank" rel="noopener">@arvo.niigata.eyelash</a></td><td class="num">336</td><td class="num">約471</td><td class="num"><a href="https://www.instagram.com/reel/DDGPcKBzjbF/" target="_blank" rel="noopener">5,345</a></td><td class="num"><b>11倍</b></td><td class="num">16倍</td><td class="note"></td></tr><tr><td><a href="https://www.instagram.com/bie_miki_eye/" target="_blank" rel="noopener">@bie_miki_eye</a></td><td class="num">3,280</td><td class="num">約3,839</td><td class="num"><a href="https://www.instagram.com/reel/DDmSURcP3D9/" target="_blank" rel="noopener">4.2万</a></td><td class="num"><b>11倍</b></td><td class="num">13倍</td><td class="note"></td></tr></tbody></table></div>
+</section>
+
+<section style="display:grid;gap:16px">
+  <h2><small>CASES</small>伸びたリール、一本ずつ</h2>
+  <p class="lede">いいね率は「いいね数÷再生数」です。自然に伸びたと思われるリールは0.4〜0.6%前後、宣伝型と思われるリールは0.1%未満でした。</p>
+  <div class="reels"><article class="reel ">
+  <div class="reel-head"><h3>「本八幡駅南口周辺、すでに冠水しています」</h3><span class="meta">@eclat_hazuki_motoyawata · 2026年9月21日</span></div>
+  <div class="stats"><div class="stat"><span>再生</span><strong>74.7万</strong></div><div class="stat hl"><span>いつもの何倍</span><strong>1229倍</strong></div><div class="stat"><span>いいね</span><strong>2,762</strong></div><div class="stat"><span>いいね率</span><strong>0.37%</strong></div></div>
+  <ul class="why"><li>まつげサロンが、大雨の日に駅前の冠水の様子を撮って、すぐに投稿したリール。</li><li>「これから帰宅される方や、付近を通る予定の方は足元に十分ご注意ください」と、地域の人のための情報になっている。</li><li>いつもの約600回から74.7万回へ、1,229倍。シェアが533件。再現を狙うものではないが、「地域で役に立つ店」として覚えてもらえる。</li></ul>
+  <div class="tags"><span class="tag">地域の速報</span><span class="tag">本業の外</span><a href="https://www.instagram.com/reel/DdioazegnC2/" target="_blank" rel="noopener" style="margin-left:auto;font-size:13px">投稿を見る</a></div>
+</article><article class="reel ">
+  <div class="reel-head"><h3>「眉毛描くと濃くなる…そんな方におすすめの描き方」</h3><span class="meta">@mignon_shiori · 2026年5月12日</span></div>
+  <div class="stats"><div class="stat"><span>再生</span><strong>11.6万</strong></div><div class="stat hl"><span>いつもの何倍</span><strong>31倍</strong></div><div class="stat"><span>いいね</span><strong>非表示</strong></div><div class="stat"><span>いいね率</span><strong>—</strong></div></div>
+  <ul class="why"><li>眉を描くと濃くなってしまう、という多くの人の悩みから始めている。</li><li>「ペンシルから描き始めている方は、まず眉マスカラを先に」と、すぐ試せる手順を教えている。</li><li>11.6万回、いつもの31倍。サロンに来ない人にも役立つ内容。</li></ul>
+  <div class="tags"><span class="tag">お役立ち</span><span class="tag">悩みの言葉</span><span class="tag">保存したくなる</span><a href="https://www.instagram.com/reel/DYPEKwmtYim/" target="_blank" rel="noopener" style="margin-left:auto;font-size:13px">投稿を見る</a></div>
+</article><article class="reel ">
+  <div class="reel-head"><h3>「22歳無職の時に東京へ遊びに行き…」</h3><span class="meta">@runa__eyelash · 2026年8月16日</span></div>
+  <div class="stats"><div class="stat"><span>再生</span><strong>10.6万</strong></div><div class="stat hl"><span>いつもの何倍</span><strong>40倍</strong></div><div class="stat"><span>いいね</span><strong>468</strong></div><div class="stat"><span>いいね率</span><strong>0.44%</strong></div></div>
+  <ul class="why"><li>東京でアイリストを始め、代官山で学び、地元の札幌へ戻ってきた経歴を、曲「情熱大陸」に合わせて語っている。</li><li>経歴の最後に、お客様一人一人のまつ毛の生え方を見て施術する、というこだわりにつなげている。</li><li>フォロワー661人で10.6万回、フォロワーの160倍。</li></ul>
+  <div class="tags"><span class="tag">ストーリー</span><span class="tag">人柄</span><a href="https://www.instagram.com/reel/DcGOl5ZRaKk/" target="_blank" rel="noopener" style="margin-left:auto;font-size:13px">投稿を見る</a></div>
+</article><article class="reel ">
+  <div class="reel-head"><h3>「アイリスがぶどうを育てる！？」</h3><span class="meta">@rimore.m · 2026年9月29日</span></div>
+  <div class="stats"><div class="stat"><span>再生</span><strong>3万</strong></div><div class="stat hl"><span>いつもの何倍</span><strong>43倍</strong></div><div class="stat"><span>いいね</span><strong>181</strong></div><div class="stat"><span>いいね率</span><strong>0.60%</strong></div></div>
+  <ul class="why"><li>「趣味ってないんだよね〜と思ってたけど、7年目のぶどう農家でした！笑」と、店主の意外な一面を見せている。</li><li>まつげの話は一切ないが、人として覚えてもらえる。</li><li>いいね率0.6%。いつもの約700回から3万回へ、43倍。</li></ul>
+  <div class="tags"><span class="tag">意外な一面</span><span class="tag">人柄</span><a href="https://www.instagram.com/reel/Dd3X0RMSbkR/" target="_blank" rel="noopener" style="margin-left:auto;font-size:13px">投稿を見る</a></div>
+</article><article class="reel ">
+  <div class="reel-head"><h3>「自まつ毛だとちょっと寂しい…だけど派手なデザインは苦手な方へ」</h3><span class="meta">@akane_eyelash.en · 2025年9月2日</span></div>
+  <div class="stats"><div class="stat"><span>再生</span><strong>7.8万</strong></div><div class="stat hl"><span>いつもの何倍</span><strong>54倍</strong></div><div class="stat"><span>いいね</span><strong>非表示</strong></div><div class="stat"><span>いいね率</span><strong>—</strong></div></div>
+  <ul class="why"><li>「寂しい」と「派手は苦手」、2つの気持ちの間にいる人に呼びかけている。</li><li>「それって自まつげ？！と言われるようなナチュラルなデザイン」と、仕上がりを言葉で約束している。</li><li>フォロワー587人で7.8万回、フォロワーの133倍。</li></ul>
+  <div class="tags"><span class="tag">呼びかけ</span><span class="tag">悩みの言葉</span><a href="https://www.instagram.com/reel/DOGVTuuE2sA/" target="_blank" rel="noopener" style="margin-left:auto;font-size:13px">投稿を見る</a></div>
+</article><article class="reel special">
+  <div class="reel-head"><h3>「【恵比寿・銀座・心斎橋】30才からのまつ毛&眉毛サロン」</h3><span class="meta">@nina_eyedesign · 2024年3月15日</span></div>
+  <div class="stats"><div class="stat"><span>再生</span><strong>25.9万</strong></div><div class="stat hl"><span>いつもの何倍</span><strong>68倍</strong></div><div class="stat"><span>いいね</span><strong>154</strong></div><div class="stat"><span>いいね率</span><strong>0.06%</strong></div></div>
+  <ul class="why"><li>店舗の地名と「30才から」というお客さん像を、1行目にまとめている。</li><li>「スピーディーな施術」「品良くセンス良い」「長持ち」と、特徴を箇条書きにしている。</li><li>25.9万回に対していいね率0.06%。広告で届けた可能性が高い。</li></ul>
+  <div class="tags"><span class="chip warn">宣伝型の可能性</span><span class="tag">地名</span><span class="tag">誰向けか</span><a href="https://www.instagram.com/reel/C4hMqsjPzmc/" target="_blank" rel="noopener" style="margin-left:auto;font-size:13px">投稿を見る</a></div>
+</article><article class="reel special">
+  <div class="reel-head"><h3>「NEW OPEN 仙台駅前店」平日限定価格</h3><span class="meta">@sendai_kurumi · 2026年6月4日</span></div>
+  <div class="stats"><div class="stat"><span>再生</span><strong>7.9万</strong></div><div class="stat hl"><span>いつもの何倍</span><strong>105倍</strong></div><div class="stat"><span>いいね</span><strong>17</strong></div><div class="stat"><span>いいね率</span><strong>0.02%</strong></div></div>
+  <ul class="why"><li>新店舗のオープンと、オープン記念の平日限定価格を告知している。</li><li>いつもの約750回から7.9万回へ、105倍。いいね率は0.02%で、今回の4ジャンルで一番低い。</li><li>オープン時に、近くの人へ一気に知らせるための広告と考えられる。</li></ul>
+  <div class="tags"><span class="chip warn">宣伝型の可能性</span><span class="tag">オープン告知</span><span class="tag">限定価格</span><a href="https://www.instagram.com/reel/DZJ1-NxMpVS/" target="_blank" rel="noopener" style="margin-left:auto;font-size:13px">投稿を見る</a></div>
+</article></div>
+</section>
+
+<section style="display:grid;gap:16px">
+  <h2><small>PATTERNS</small>まつ毛・眉サロンで跳ねた「型」</h2>
+  <div class="types"><div class="type"><h3>アイリスト本人のストーリー</h3><p>上京、修行、地元に戻る。経歴を1本にまとめ、最後に施術のこだわりにつなげる。</p><p class="ex">runa 10.6万回</p></div><div class="type"><h3>店主の意外な一面</h3><p>ぶどう農家、趣味、休日。まつげと関係なくても、人として覚えてもらえます。</p><p class="ex">rimore 3万回</p></div><div class="type"><h3>描き方・ケアのお役立ち</h3><p>眉の描き方、まつげパーマを長持ちさせるコツ。サロンに来ない人にも届き、保存されます。</p><p class="ex">mignon 11.6万回</p></div><div class="type"><h3>2つの気持ちの間にいる人へ呼びかける</h3><p>「寂しいけど、派手は苦手」。迷っている人に、ちょうどいい答えを出します。</p><p class="ex">akane 7.8万回</p></div><div class="type no"><h3>宣伝型: 地名・オープン・限定価格</h3><p>店舗の地名、オープン告知、サービス一覧。大きく跳ねても、いいね率は0.1%未満。広告で届けた可能性が高い型です。</p><p class="ex">nina 25.9万回 / Kurumi 7.9万回</p></div></div>
+</section>
+
+<section style="display:grid;gap:16px">
+  <h2><small>COMPARE</small>4ジャンルを並べると</h2>
+  <div class="tbl"><table class="cmp"><thead><tr><th>ジャンル</th><th>件数</th><th>フォロワー中央値</th><th>いつもの再生数</th><th>5倍以上</th><th>10倍以上</th></tr></thead><tbody><tr class=""><td>飲食の個人店</td><td class="num">48</td><td class="num">1,666</td><td class="num">2,228</td><td class="num">40%</td><td class="num">27%</td></tr><tr class=""><td>ネイルサロン</td><td class="num">61</td><td class="num">817</td><td class="num">960</td><td class="num">34%</td><td class="num">20%</td></tr><tr class=""><td>美肌・スキンケアサロン</td><td class="num">52</td><td class="num">916</td><td class="num">728</td><td class="num">40%</td><td class="num">23%</td></tr><tr class="me"><td>まつ毛・眉サロン</td><td class="num">80</td><td class="num">589</td><td class="num">1,038</td><td class="num">39%</td><td class="num">19%</td></tr></tbody></table></div>
+  <p class="caption">まつ毛・眉は、30倍以上に跳ねたサロンが一番多いジャンルでした。そのぶん宣伝型も多く、いいね率の低さは4ジャンルで一番でした。</p>
+</section>
+
+<section style="display:grid;gap:16px">
+  <h2><small>NEXT STEP</small>明日から真似するなら</h2>
+  <ul class="todo"><li><b>① 自分の経歴を1本のリールにまとめる</b>なぜアイリストになったか、どこで学んだか、何を大事にしているか。最後は施術のこだわりで締めます。</li><li><b>② 「描き方」「長持ちのコツ」を月に1本</b>お客さんによく聞かれる質問への答えを、手順にして見せます。保存されて長く見られます。</li><li><b>③ 迷っている人の気持ちを、1枚目に書く</b>「ナチュラルがいいけど、変化もほしい」。2つの気持ちの間にいる人ほど、答えを探しています。</li><li><b>④ オープンや新メニューのときは、広告も選択肢に</b>地名・限定価格・予約方法をはっきり書きます。ただし、ファンを増やすのは①〜③の投稿です。</li></ul>
+</section>
+
+<section style="display:grid;gap:16px">
+  <h2><small>METHOD</small>調べ方と、わかっていないこと</h2>
+  <ul class="method"><li>まつげパーマ、マツエク、眉毛を中心にしたアイサロン80店。前回の「美容サロン編」に入っていたまつげ・眉のサロンも含みます。</li><li>Instagramの検索から候補を集め、Chromeでプロフィールのリール一覧を開いて、直近12〜15本の再生数を読み取りました。全国から無作為に選んだわけではないので、検索に出やすいアカウントに偏っています。</li><li>リールが6本未満のアカウント、フォロワー5万人以上のアカウント、プロフィールにブロガー・講師・スクール・コンサル・株式会社などとあるアカウント、お店やサロンではないアカウントは外しました。</li><li><b>広告として配信されたかどうかは、画面からはわかりません。</b>「宣伝型」と書いているのは、キャプションの文面(地名・価格・初回割引・オープン告知)と、いいね率の低さ(おおむね0.3%未満)からの推測です。</li><li>いいね数を非表示にしている投稿も多く、その場合はいいね率を出していません。画面から読み取った数字のため、多少ずれている可能性があります。</li><li>投稿日はリールのIDから計算した日付です。調べている途中でInstagramの表示制限がかかり、一部のアカウントは読み取れませんでした。</li></ul>
+</section>
+
+</div>
